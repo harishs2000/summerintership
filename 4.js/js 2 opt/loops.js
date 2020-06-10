@@ -8,9 +8,6 @@ for(var i = -10; i < 20; i++){
 
 console.log("PRINTING ALL EVEN BETWEEN 10 AND 40");
 
-// for(var i = 11; i <= 40; i += 2){
-// 	console.log(i);
-// }
 
 for(var i = 10; i <= 40; i += 1){
 	if(i % 2 === 0) {
