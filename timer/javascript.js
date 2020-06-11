@@ -4,6 +4,7 @@ var secs=prompt("enter secs");
 var hh= document.getElementById("hours");
 var mm=document.getElementById("mins");
 var ss=document.getElementById("secs");
+var currenttime;
 var totalsecs=Number(hours)*3600+Number(mins)*60+Number(secs);
 setInterval(display,1000);
 function display()
