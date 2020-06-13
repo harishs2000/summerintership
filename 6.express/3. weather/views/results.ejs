@@ -1,0 +1,8 @@
+<h1><%= data.name %></h1>
+<% ldata=Object.keys(data.main); %>
+<% rdata=Object.values(data.main); %>
+
+<%  for(i=0;i<ldata.length;i++) { %>
+    <li><%= ldata[i]%> =  <%= rdata[i] %> </li>
+<% } %>
+
