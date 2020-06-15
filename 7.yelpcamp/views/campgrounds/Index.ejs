@@ -1,0 +1,32 @@
+<%- include("../partials/header") %>
+<div class="container">
+<div class="jumbotron">
+<div class="container">
+<h1>Welcome to Yelpcamp</h1>
+<p>View our Hand-picked campgrounds all around the World!!</p>
+<p>
+<a class="btn btn-primary" href="/">HOMEPAGE</a>
+<a class="btn btn-primary" href="/campgrounds/new">ADD CAMPGROUND</a>
+</p>
+</div>
+</div>
+<h4>  Our Popular Sites!</h4>
+<div class="row text-center">
+<% cgs.forEach(display); %>
+<% function display(cg){ %>
+    <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+    <div class="card  rounded-0">
+        <img class="card-img-top img-fluid rounded-0" src="<%= cg.img %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= cg.name %></h5>
+          <a href="/campgrounds/<%= cg._id%>" class="btn btn-primary">more info</a>
+        </div>
+    </div>
+    </div>
+<% } %>
+</div>
+</div>
+
+
+<%- include("../partials/footer") %>
+

@@ -1,0 +1,42 @@
+<%- include("../partials/header") %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3">
+            <ul class="list-group">
+                    <li class="list-group-item">info 1</li>
+                    <li class="list-group-item">info 2</li>
+                    <li class="list-group-item">info 3</li>
+            </ul>
+        </div>
+        <div class="col-lg-9">
+            <div class="card">
+                <img class="card-img-top" src="<%= cg.img %>" alt="Card image cap">
+                <div class="card-body">
+                        <p class="float-right">$9.00/night</p>
+                        <h5 class="card-title text-primary"><%= cg.name %></h5>
+                        <p class="card-text"><%= cg.description %></p>
+                </div>
+            </div>
+            <br>
+            <div class="card bg-light">
+                <div class="text-right card-header"><a href="/campgrounds/<%= cg._id %>/comments/new" class="btn btn-primary">leave a comment!</a></div>
+            
+                    <% for(let comment of cg.comments ){ %>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                        <p class="float-right">2 days ago</p>
+                                        <h5 class="card-title"><strong><%= comment.author %></strong></h5>
+                                        <p class="card-text"><%= comment.text %></p>
+                                </div>
+                            </div>
+                        </div>
+                    <% } %>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("../partials/footer") %>
+
