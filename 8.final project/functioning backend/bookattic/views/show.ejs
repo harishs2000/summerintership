@@ -1,0 +1,11 @@
+<%- include("./partials/header") %>
+<div class="container">
+<h1><%= book.title %></h1>
+<img src="<%= book.image %>" >
+<h1><%= book.author %></h1>
+<a href="/books/<%= book._id %>/edit" class="btn btn-primary">Edit book details</a>
+
+<br>
+<a href="/books">go back</a>
+</div>
+<%- include("./partials/footer") %>
