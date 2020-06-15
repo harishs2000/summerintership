@@ -1,0 +1,22 @@
+<%- include("./partials/header") %>
+<div class="container">
+<div class="jumbotron">
+    <h1>movies</h1>
+    <a href="/movies/new%>" class="btn btn-primary">Add new movie</a>
+</div>
+
+<div class="row">
+    <% for(let movie of movies){ %>
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+        <div class="card  rounded-0">
+            <img class="card-img-top img-fluid rounded-0" src="<%= movie.img %>" alt="Card image cap">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"><%= movie.year %></h6>
+                <h5 class="card-title"><%= movie.name %></h5>
+              <a href="/movies/<%= movie._id %>" class="btn btn-primary">more info</a>
+            </div>
+        </div>
+        </div>
+     <% } %>
+    </div>
+<%- include("./partials/footer") %>
