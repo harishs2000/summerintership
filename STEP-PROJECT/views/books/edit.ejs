@@ -1,0 +1,130 @@
+<%- include ("../partials/header") %>
+<div class="row no-gutters">
+  <div class="col-md-2 side-bar">
+    <div class="leftside-bar">
+      <div style="margin-top: 20%;">
+        <div id="logo-container-side"></div>
+      </div>
+      <ul class="side-bar-list">
+        <li class="side-element"><a href="/books">HOME</a></li>
+        <li class="side-element"><a href="/books/new">ADD NEW</a></li>
+        <li class="side-element"><a href="/logout">LOGOUT</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="rightside-bar">
+      <div class="container">
+        <h4 class="hello-name">Hello, <%= username %><img class="user-icon" src="https://i.ibb.co/8sS1dMq/Nice-Png-gray-circle-png-1366211.png"></h4>
+        <h3>
+          <a href="/books/<%= book._id %>" style="color:white;"><svg class="bi bi-arrow-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+            <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg></a>
+          EDIT BOOK DETAIL
+          <form
+            action="/books/<%= book._id %>?_method=DELETE"
+            method="POST"
+            style="display: inline-flex;"
+          >
+          <a href='#' style="color: white;" onclick='this.parentNode.submit(); return false;'><svg class="bi bi-trash delete-icon" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+          </svg></a> 
+          </form>
+        </h3>
+        <div class="new-form-container">
+          <form action="/books/<%= book._id %>/edit?_method=PUT" class="needs-validation" method="POST" novalidate>
+            <div class="form-group">
+              Book Title
+              <input
+                class="form-control new-book-details" type="text" name="book[title]" style="color: white; background-color: #181819;" value="<%= book.title %>" required />
+              <div class="invalid-feedback"> book title is required. </div>
+            </div>
+            <div class="form-group">
+              Image URL
+              <input  class="form-control new-book-details" type="text" name="book[image]" style="color: white; background-color: #181819;" value="<%= book.image %>" required/>
+              <div class="invalid-feedback">image is required.</div>
+            </div>
+            <div class="form-group">
+              Book Author
+              <input class="form-control new-book-details" type="text" name="book[author]" style="color: white; background-color: #181819;" value="<%= book.author %>" required />
+              <div class="invalid-feedback">author is required.</div>
+            </div>
+            <label style="margin-right: 30px;">Category:</label>
+            <div class="form-check form-check-inline">
+              <input  class="form-check-input"  type="radio"  name="book[category]"  id="fiction"  value="fiction"  required  />
+              <label class="form-check-label" for="fiction">Fiction</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="book[category]"  id="nonFiction"  value="non fiction"  />
+              <label class="form-check-label" for="nonFiction">Non Fiction</label>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-2 price-rating">
+                <label> Price</label>
+                <input class="form-control new-book-details" type="text"  name="book[price]" style="color: white; background-color: #181819;"  value="<%= book.price %>" required/>
+                <div class="invalid-feedback"> price is required.</div>
+              </div>
+              <div class="form-group col-md-2 price-rating">
+                <label for="inputState">Rating</label>
+                <select id="inputState" class="form-control new-book-details"  name="book[Ratings]" style="color: white; background-color: #181819;">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+              </select>
+              </div>
+            </div>
+            <div class="form-group">
+              About the book
+              <textarea  class="form-control new-book-details"  name="book[description]"  rows="5"  style="color: white; background-color: #181819;"  required><%= book.about %></textarea>
+              <div class="invalid-feedback">About the book is required.</div>
+            </div>
+            <div class="form-group text-center">
+              <button class="btn btn-lg book-btn">Save</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include ("../partials/footer") %>
+
+
+<% /* CUSTOM FORM VALIDATION USING BOOTSTRAP */ %>
+<script>
+  // Example starter JavaScript for disabling form submissions if there are invalid fields
+  (function() {
+   'use strict';
+   window.addEventListener('load', function() {
+     // Fetch all the forms we want to apply custom Bootstrap validation styles to
+     var forms = document.getElementsByClassName('needs-validation');
+     // Loop over them and prevent submission
+     var validation = Array.prototype.filter.call(forms, function(form) {
+       form.addEventListener('submit', function(event) {
+         if (form.checkValidity() === false) {
+           event.preventDefault();
+           event.stopPropagation();
+         }
+         form.classList.add('was-validated');
+       }, false);
+     });
+   }, false);
+ })();
+</script>
+
+
+
+
+
+
+  
+  

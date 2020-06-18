@@ -1,0 +1,59 @@
+<%- include ("../partials/header") %>
+<div class="row no-gutters">
+  <div class="col-md-2 side-bar">
+    <div class="leftside-bar">
+      <div style="margin-top: 20%;">
+        <div id="logo-container-side"></div>
+      </div>
+      <ul class="side-bar-list">
+        <li class="side-element"><a href="/books">HOME</a></li>
+        <li class="side-element"><a href="/books/new">ADD NEW</a></li>
+        <li class="side-element"><a href="/logout">LOGOUT</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="rightside-bar">
+      <div class="container">
+        <h4 class="hello-name">Hello, <%= username %><img class="user-icon" src="https://i.ibb.co/8sS1dMq/Nice-Png-gray-circle-png-1366211.png"></img></h4>
+        <h3>
+          <a href="/books" style="color: white;"><svg class="bi bi-arrow-left" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M5.854 4.646a.5.5 0 0 1 0 .708L3.207 8l2.647 2.646a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 0 1 .708 0z"/>
+            <path fill-rule="evenodd" d="M2.5 8a.5.5 0 0 1 .5-.5h10.5a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+          </svg></a> BOOK DETAIL 
+        </h3>
+        <div class="modal-body row">
+          <div class="col-md-3">
+            <img src="<%= book.image %>" class="img-fluid rounded" style="width: 100%;" />
+          </div>
+          <div class="col-md-9">
+            <h1>
+              <%=book.title%> 
+              <a href="/books/<%= book._id %>/edit"><svg style="color:white" class="edit-icon" id="Capa_1" enable-background="new 0 0 512 512" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><g><path d="m384.721 0-323.626 323.627-61.095 188.373 188.374-61.094 323.626-323.627zm84.853 127.279-42.427 42.427-84.853-84.853 42.426-42.427zm-388.611 232.331 71.427 71.428-32.036 10.39-49.782-49.782zm14.501-27.925 225.617-225.618 31.82 31.82-225.618 225.617zm53.032 53.032 225.618-225.619 31.82 31.82-225.618 225.619zm-88.313 38.965 28.136 28.136-41.642 13.505z"/></g></svg></a>
+            </h1>
+            <p><span class="star-rating"><span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star checked"></span>
+              <span class="fa fa-star"></span></span><%= book.Ratings %>.0 Rating</p>
+            <h5 id="show-author">By <%= book.author %></h5>
+            <h3 class="price-display">₹<%= book.price %>.00</h3>
+            <button class="btn btn-light book-btn">
+              Add to Cart!
+            </button>
+          </div>
+        </div>
+        <h3>About the book</h3>
+        <p><%= book.about %></p>
+        <h3 id="show-review">Reviews</h3>
+        <% review.forEach(function(review){ %>
+        <h5><em><%= review.title %></em></h5>
+        <p style="color:#8159ff"><strong>By <%= review.author %></strong></p>
+        <p><%= review.text %></p>
+        <hr id="style-six" />
+        <% }) %>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include ("../partials/footer") %>

@@ -1,0 +1,74 @@
+<%- include ("../partials/header") %>
+<div class="row no-gutters">
+  <div class="col-md-2 side-bar">
+    <div class="leftside-bar">
+      <div style="margin-top: 20%;">
+        <div id="logo-container-side"></div>
+      </div>
+      <ul class="side-bar-list">
+        <li class="side-element"><a href="/books">HOME</a></li>
+        <li class="side-element"><a href="/books/new">ADD NEW</a></li>
+        <li class="side-element"><a href="/logout">LOGOUT</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-10">
+    <div class="rightside-bar">
+     <% if(books.length==0) { %>
+      <div class="container6">
+          <h1>the Books list is empty</h1>
+          <h1><a href="books/new">click here to add new books !</a></h1>
+      </div>
+      <% } else { %>
+      <div class="container">
+        <h4 class="hello-name">Hello, <%= username %><img class="user-icon" src="https://i.ibb.co/8sS1dMq/Nice-Png-gray-circle-png-1366211.png"></img></h4>
+        <div>
+          <h3 class="index-titles">FICTION</h3>
+          <div class="row text-center">
+            <% books.forEach(function(book){ %> <% if (book.category=="fiction") { %>
+            <div class="col-md-3 col-sm-6">
+              <div class="thumbnail index-box">
+                <a href="/books/<%= book._id %>"
+                  ><img class="img-fluid index-box-img" src="<%= book.image %>"
+                /></a>
+                <div>
+                  <h5 class="text-left index-box-title"><%= book.title %></h5>
+                  <p class="text-left index-box-author">by <%= book.author %></p>
+                  <p class="index-box-rating">
+                    <%= book.Ratings %> Rating
+                    <span class="index-box-price">₹<%= book.price %></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% } %> <% }); %>
+          </div>
+        </div>
+        <div>
+          <h3 class="index-titles">NON FICTION</h3>
+          <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+            <% books.forEach(function(book){ %> <% if (book.category!="fiction") { %>
+            <div class="col-md-3 col-sm-6">
+              <div class="thumbnail index-box">
+                <a href="/books/<%= book._id %>"
+                  ><img class="img-fluid index-box-img" src="<%= book.image %>"
+                /></a>
+                <div>
+                  <h5 class="text-left index-box-title"><%= book.title %></h5>
+                  <p class="text-left index-box-author">by <%= book.author %></p>
+                  <p class="index-box-rating">
+                    <%= book.Ratings %> Rating
+                    <span class="index-box-price">₹<%= book.price %></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <% } %> <% }); %>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+</div>
+<%- include ("../partials/footer") %>

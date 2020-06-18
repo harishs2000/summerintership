@@ -1,0 +1,111 @@
+<%- include("./partials/header") %>
+
+<div class="row no-gutters">
+  <div class="col-md-7" id="login-img">
+    <div class="leftside">
+      <div id="img-container"></div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="rightside">
+      <div id="login-form">
+        <div id="logo-container-login"></div>
+        <form action="/register" method="POST" id="form">
+          <div class="form-group">
+            <input
+              class="form-control login-details"
+              type="text"
+              name="username"
+              placeholder="username"
+              id="name"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control login-details"
+              type="password"
+              name="password"
+              placeholder="password"
+              id="password"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control login-details"
+              type="password"
+              name="cpassword"
+              placeholder="confirm password"
+              id="cpassword"
+            />
+          </div>
+          <div id=error style="color:#b04c54"></div>
+          <div class="text-center">
+            <input
+              type="submit"
+              value="SIGN UP"
+              class="btn btn-light btn-block"
+              id="login-btn"
+            />
+          </div>
+        </form>
+        <p class="login-txt text-center">
+          Already have an account? <a href="/signin" id="reg-link"> Login</a>
+        </p>
+        <p class="login-txt text-center">
+          This mini project is developed as a part of Sirius Summer Internship
+        </p>
+        <div id=userdiv style="color: #181819;" ><%= listofusernames %></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<script type="text/javascript">
+const name = document.getElementById('name')
+const password = document.getElementById('password')
+const cpassword = document.getElementById('cpassword');
+const form = document.getElementById('form')
+const errorElement = document.getElementById('error')
+const users = (document.getElementById("userdiv").innerText).split(",");
+form.addEventListener('submit', (e) => {
+  let messages = []
+  if (name.value === '' || name.value == null) {
+    messages.push('Name is required')
+  }
+  else if(users.includes(name.value))
+  {
+    console.log(users);
+    messages.push("Username already exists");
+  }
+
+  if (password.value.length <= 6) {
+    messages.push('Password must be longer than 6 characters')
+  }
+
+  if (password.value.length >= 20) {
+    messages.push('Password must be less than 20 characters')
+  }
+
+  if (password.value === 'password') {
+    messages.push('Password cannot be password')
+  }
+
+  if(password.value!==cpassword.value){
+    messages.push("Password didn't match")
+  }
+
+
+  if (messages.length > 0) {
+    e.preventDefault()
+    errorElement.innerText = messages.join(', ')
+  }
+})
+</script>
+<%- include("./partials/footer") %>
+
