@@ -95,7 +95,7 @@ margin: 0;
 padding: 0;
 text-align: center;
 position: absolute;
-top:80% ;
+top:30% ;
 left:30%;
 }
 
@@ -178,11 +178,7 @@ left:30%;
   text-decoration: none;
 }
 
-.leftside-bar,
-.rightside-bar {
-  height: 100%;
-  width: 100%;
-}
+
 .rightside-bar {
   background: #181819;
 }
@@ -238,4 +234,14 @@ left:30%;
   background: none;
   color: white;
   margin-left: 700px;
+}
+
+#secondary{
+min-height: 100vh;
+}
+
+.leftside-bar,
+.rightside-bar {
+  height: 100%;
+  width: 100%;
 }
